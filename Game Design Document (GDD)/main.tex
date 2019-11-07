@@ -395,9 +395,195 @@ Para cumplir los objetivos secundarios el jugador debe cumplir ciertos requisito
     \end{figure}
 \end{itemize}
 
+\begin{itemize}
+    \item \textcolor{Orange}{Reparar}
+    \begin{itemize}
+        \item Limitaciones: vida torre mayor que 0 y menor que vida maxima, recursos suficientes
+        \item Consecuencias: aumento vida torre, disminución de recursos
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/reparir.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Reparar}}}\label{fig:4}
+    \end{figure}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Mejorar}
+    \begin{itemize}
+        \item Limitaciones: tener Torre.Nivel menor que Torre.MAX\_LEVEL, recursos suficientes, mejora desbloqueada
+        \item Consecuencias: aumento de Torre.Health, disminución de recursos
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/upgrade.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Mejorar}}}\label{fig:5}
+    \end{figure}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Escudo}
+    \begin{itemize}
+        \item Limitaciones: recursos suficientes, habilidad desbloqueada
+        \item Consecuencias: reducción de daño sobre torre, disminución de recursos
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/shield.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Escudo}}}\label{fig:6}
+    \end{figure}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Controlar Base}
+    \begin{itemize}
+        \item Limitaciones: 
+        \item Consecuencias: activa el modo de disparo de la base o Tower\_Play\_Mode
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/tower_play_mode.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Control Baser}}}\label{fig:7}
+    \end{figure}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/shoot_base.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Dispàra}}}\label{fig:8}
+    \end{figure}
+\end{itemize}
+
 \subsubsection{3.1.2. HUD Actions}
 
+\begin{itemize}
+    \item \textcolor{Orange}{Construir Torre \(O Recolector\)}
+    \begin{itemize}
+        \item Limitaciones: recursos suficientes, espacio libre, torre desbloqueada
+        \item Consecuencias: cambio visual (nueva torre), espacio ocupado, reducción de recursos
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/click_hud_tower.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Click en Icono de Torre}}}\label{fig:9}
+    \end{figure}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/drop_the_tower.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Soltar torre}}}\label{fig:10}
+    \end{figure}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{ Seleccionar Torre)}
+    \begin{itemize}
+        \item Limitaciones: torre seleccionable
+        \item Consecuencias: activa menú pop-up
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/click_on_tower.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Click en Torre}}}\label{fig:11}
+    \end{figure}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Cámara en Torre o Enemigo}
+    \begin{itemize}
+        \item Limitaciones: torre o enemigo seleccionable
+        \item Consecuencias: cambia la posición de la camara 
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/camera.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Camara}}}\label{fig:12}
+    \end{figure}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Ataque Especial}
+    \begin{itemize}
+        \item Limitaciones: ataque activo \(no en tiempo de recarga\), ataque desbloqueado
+        \item Consecuencias: disminución de la vida de los enemigos, activar tiempo de recarga 
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/bomb.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Bomba}}}\label{fig:13}
+    \end{figure}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/nuke.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Nuke}}}\label{fig:14}
+    \end{figure}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Pausar el juego}
+    \begin{itemize}
+        \item Limitaciones:  juego activo
+        \item Consecuencias: juego pausado
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Reanudar Juego}
+    \begin{itemize}
+        \item Limitaciones:  juego pausado
+        \item Consecuencias: juego reanudado
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Acelerar Juego}
+    \begin{itemize}
+        \item Limitaciones: juego en velocidad inferior a la que se active
+        \item Consecuencias: juego acelerado
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Ralentizar Juego}
+    \begin{itemize}
+        \item Limitaciones:  juego en velocidad superior a la que se active
+        \item Consecuencias: se ralentiza el juego
+    \end{itemize}
+\end{itemize}
+
 \subsubsection{3.1.3. Research Actions}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Elegir Mejora}
+    \begin{itemize}
+        \item Limitaciones: tener XP, tener el nivel previo de la mejora si lo hay
+        \item Consecuencias: se selecciona la mejora, sin hacerse efectiva 
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Confirmar Mejora}
+    \begin{itemize}
+        \item Limitaciones: haber seleccionado la mejora, pulsar el botón de aceptación
+        \item Consecuencias: se agrega la mejora, se vuelve a la pantalla de mapa
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Cancelar Mejora}
+    \begin{itemize}
+        \item Limitaciones: pulsar el botón de cancelación
+        \item Consecuencias: se vuelve a la pantalla de mapa, no se confirman las mejoras elegidas
+    \end{itemize}
+\end{itemize}
 
 \subsubsection{3.1.4. Map Actions}
 
