@@ -314,7 +314,14 @@ Para cumplir los objetivos secundarios el jugador debe cumplir ciertos requisito
 \hfill \break \noindent Entidad encargada de la vista desde distintos objetos del juego, solo uno a la vez.
 
 \begin{itemize}
-    \item 
+    \item \textcolor{Orange}{Coordenadas \{X, Y, Z\}}
+    \begin{itemize}
+        \item Valores que indican la posición del objeto Camera en el mundo del juego.
+    \end{itemize}
+    \item \textcolor{Orange}{Dirección}
+    \begin{itemize}
+        \item Valor que indica hacia donde observa el objeto Camera en el mundo del juego.
+    \end{itemize}
 \end{itemize}
 
 \noindent \textbf{Torre Generadora}
@@ -322,31 +329,325 @@ Para cumplir los objetivos secundarios el jugador debe cumplir ciertos requisito
 \hfill \break \noindent Entidad encargada de generar recursos periódicamente.
 
 \begin{itemize}
-    \item 
+    \item \textcolor{Orange}{MAX\_HEALTH \{INTEGER\}}
+    \begin{itemize}
+        \item Vida máxima de la entidad Torre Generadora.
+    \end{itemize}
+    \item \textcolor{Orange}{HEALTH \{0, MAX\_HEALTH\}}
+    \begin{itemize}
+        \item Vida actual de la entidad Torre Generadora.
+    \end{itemize}
+    \item \textcolor{Orange}{Sell Price \{MAX\_BENEFITS\}}
+    \begin{itemize}
+        \item f(LVL, Research.Improvements)
+        \item Cantidad de recursos que da la venta del objeto Torre Generadora.
+    \end{itemize}
+    \clearpage
+    \item \textcolor{Orange}{Resources \{INTEGER\}}
+    \begin{itemize}
+        \item f(Research.Improvements)
+        \item Valor que indica la cantidad de recursos que genera el objeto Torre Generadora.
+    \end{itemize}
+    \item \textcolor{Orange}{Rate\_of\_Resources \{T\_MIN, T\_MAX\}}
+    \begin{itemize}
+        \item f(LVL, Research.Improvements) 
+        \item Velocidad con la cual la entidad Torre Generadora ejecuta la acción de dar recursos. 
+    \end{itemize}
+    \item \textcolor{Orange}{Appearance \{VISUAL\_MODEL\}}
+    \begin{itemize}
+        \item Diseño gráfico de la entidad Torre generadora.
+    \end{itemize}
 \end{itemize}
 
-\noindent \textbf{Torre Generadora}
+\noindent \textbf{Base}
+
+\hfill \break \noindent Entidad que el jugador debe proteger para completar el nivel. También puede controlarla para dañar a los enemigos.
+
+\begin{itemize}
+    \item \textcolor{Orange}{MAX\_HEALTH \{INTEGER\}}
+    \begin{itemize}
+        \item Vida máxima de la entidad Base.
+    \end{itemize}
+    \item \textcolor{Orange}{HEALTH \{0, MAX\_HEALTH\}}
+    \begin{itemize}
+        \item Vida actual de la entidad Base.
+    \end{itemize}
+    \item \textcolor{Orange}{Tower\_Play\_Mode \{ON, OFF\}}
+    \begin{itemize}
+        \item Variable que indica si está activo el modo de control de la base.
+    \end{itemize}
+    \item \textcolor{Orange}{Range \{1, MAX\_RANGE\}}
+    \begin{itemize}
+        \item Alcance máximo de la base en modo controlado.
+    \end{itemize}
+    \item \textcolor{Orange}{DAMAGE \{1, MAX\_DMG\}}
+    \begin{itemize}
+        \item Daño de la base en modo controlado.
+    \end{itemize}
+    \item \textcolor{Orange}{Rate\_of\_fire \{T\_MIN, T\_MAX\}}
+    \begin{itemize}
+        \item Cadencia de fuego de la base en modo controlado.
+    \end{itemize}
+    \item \textcolor{Orange}{Camera \{ON, OFF\}}
+    \begin{itemize}
+        \item f(Play\_Mode).
+        \item Variable que indica si está activada la cámara de la base.
+    \end{itemize}
+     \item \textcolor{Orange}{Appearance \{VISUAL\_MODEL\}}
+    \begin{itemize}
+        \item Diseño gráfico de la entidad Torre generadora.
+    \end{itemize}
+\end{itemize}
+
+\noindent \textbf{Bicho}
+
+\hfill \break \noindent Entidad de la que el jugador debe defender la base.
+
+\begin{itemize}
+    \item \textcolor{Orange}{MAX\_HEALTH \{INTEGER\}}
+    \begin{itemize}
+        \item Vida máxima de la entidad Bicho.
+    \end{itemize}
+    \clearpage
+    \item \textcolor{Orange}{HEALTH \{0, MAX\_HEALTH\}}
+    \begin{itemize}
+        \item Vida actual de la entidad Bicho.
+    \end{itemize}
+    \item \textcolor{Orange}{Resources \{INTEGER\}}
+    \begin{itemize}
+        \item f(TYPE)
+        \item Cantidad de recursos que aporta el bicho al ser eliminado.
+    \end{itemize}
+    \item \textcolor{Orange}{Damage \{MIN\_DMG, MAX\_DMG\}}
+    \begin{itemize}
+        \item f(TYPE) 
+        \item Daño que inflige el bicho a las unidades aliadas.
+    \end{itemize}
+    \item \textcolor{Orange}{Speed \{MIN\_SPEED, MAX\_SPEED\}}
+    \begin{itemize}
+        \item f(TYPE)
+        \item Velocidad de desplazamiento del bicho.
+    \end{itemize}
+    \item \textcolor{Orange}{TYPE \{T1, T2, T3, SB\}}
+    \begin{itemize}
+        \item Variable que indica el tipo de bicho.
+    \end{itemize}
+     \item \textcolor{Orange}{Appearance \{VISUAL\_MODEL\}}
+    \begin{itemize}
+        \item Diseño gráfico de la entidad Bicho.
+    \end{itemize}
+\end{itemize}
+
+\noindent \textbf{Mejoras}
+
+\hfill \break \noindent Mejoras disponibles para las torres.
+
+\begin{itemize}
+    \item \textcolor{Orange}{Effect \{EFFECT\}}
+    \begin{itemize}
+        \item Efecto que tiene la mejora sobre la torre.
+    \end{itemize}
+    \item \textcolor{Orange}{Cost \{1, MAX\_COST\}}
+    \begin{itemize}
+        \item Cantidad de recursos que cuesta la mejora.
+    \end{itemize}
+     \item \textcolor{Orange}{Appearance \{VISUAL\_MODEL\}}
+    \begin{itemize}
+        \item Diseño gráfico de la mejora.
+    \end{itemize}
+\end{itemize}
+
+\noindent \textbf{Mejoras}
+
+\begin{itemize}
+        \item \textcolor{Orange}{Init\_resources \{1, MAX\_RESOURCES\}}
+    \begin{itemize}
+        \item Cantidad de recursos con la que empieza el juego.
+    \end{itemize}
+    \item \textcolor{Orange}{Pause \{TRUE, FALSE\}}
+    \begin{itemize}
+        \item Atributo que indica si el tiempo del juego está detenido.
+    \end{itemize}
+    \item \textcolor{Orange}{Accelerate \{TRUE, FALSE\}}
+    \begin{itemize}
+        \item Atributo que indica si el tiempo del juego está acelerado.
+    \end{itemize}
+    \item \textcolor{Orange}{Resources \{0, MAX\_RESOURCES\}}
+    \begin{itemize}
+        \item Cantidad de recursos que tiene el jugador.
+    \end{itemize}
+    \clearpage
+    \item \textcolor{Orange}{Enemy\_spawn\_point \{List{X, Y}\}}
+    \begin{itemize}
+        \item Lista de puntos de spawn posibles para los enemigos.
+    \end{itemize}
+    \item \textcolor{Orange}{Tower\_spawn\_point \{List{X, Y}\}}
+    \begin{itemize}
+        \item Lista de puntos de spawn posibles para las torres.
+    \end{itemize}
+     \item \textcolor{Orange}{Collector\_spawn\_point \{List{X, Y}\}}
+    \begin{itemize}
+        \item Lista de puntos de spawn posibles para las torres recolectoras.
+    \end{itemize}
+    \item \textcolor{Orange}{Wave\_number \{1, MAX\_WAVES\}}
+    \begin{itemize}
+        \item Número de oleadas necesarias para completar el nivel.
+    \end{itemize}
+    \item \textcolor{Orange}{Wave\_started \{TRUE, FALSE\}}
+    \begin{itemize}
+        \item Indica si hay una oleada activa.
+    \end{itemize}
+\end{itemize}
+
+\noindent \textbf{Wave}
+
+\hfill \break \noindent Entidad que contiene y gestiona a una oleada particular de bichos.
+
+\begin{itemize}
+    \item \textcolor{Orange}{Enemigos \{List(Enemigos, Spawn Enemigo, Tiempo)\}}
+    \begin{itemize}
+        \item f(Level.Wave\_Number, Level.Enemy\_Spawn\_Point)
+        \item Una lista que contiene información sobre cada enemigo que aparecerá
+    \end{itemize}
+\end{itemize}
+
+\noindent \textbf{Research}
 
 \hfill \break \noindent Entidad encargada de generar recursos periódicamente.
 
 \begin{itemize}
-    \item 
+    \item \textcolor{Orange}{EXP \{INTEGER\}}
+    \begin{itemize}
+        \item f(NIVEL)
+        \item La experiencia actual que tiene el jugador
+    \end{itemize}
+    \item \textcolor{Orange}{Improvements \{List(Tipo, Nivel, EXP)\}}
+    \begin{itemize}
+        \item Una lista con las mejoras que podría comprar el jugador.
+    \end{itemize}
 \end{itemize}
 
-\noindent \textbf{Torre Generadora}
+\noindent \textbf{Partida}
+
+\hfill \break \noindent Entidad que contiene el progreso que ha hecho el jugador en el juego.
+
+\begin{itemize}
+    \item \textcolor{Orange}{Nivel desbloqueado \{1,2,3)\}}
+    \begin{itemize}
+        \item El nivel hasta el que se ha llegado.
+    \end{itemize}
+    \item \textcolor{Orange}{Logros \{List(Nivel, Logro)\}}
+    \begin{itemize}
+        \item Una lista que contiene información sobre los logros que se han obtenido en cada nivel.
+    \end{itemize}
+    \item \textcolor{Orange}{Nivel superado \{List(dificultad)\}}
+    \begin{itemize}
+        \item Una lista que contiene información sobre la dificultlad en la que se ha superado cada nivel.
+    \end{itemize}
+\end{itemize}
+
+\clearpage
+
+\noindent \textbf{HUD}
+
+\hfill \break \noindent Todos los atributos de la IU.
+
+\begin{itemize}
+    \item \textcolor{Orange}{Main Mode}
+    \begin{itemize}
+		\item El HUD durante juego normal.
+		\item \textcolor{Orange}{Resources}
+		\begin{itemize}
+			\item f(Level.resources)
+		\end{itemize}
+		\item \textcolor{Orange}{EXP}
+		\begin{itemize}
+			\item f(Research.EXP)
+		\end{itemize}
+    \end{itemize}
+    \item \textcolor{Orange}{Pop-Up Menu Mode}
+    \begin{itemize}
+        \item Varios menus o iconos que aparecen superimpuestos sobre el juego.
+		\item \textcolor{Orange}{Tipo \{Torre, Nivel, Barra de vida\}}
+		\item (tipo == Torre)
+		\item \textcolor{Orange}{Tower\_Menu}
+		\begin{itemize}
+			\item Un menu con todas las acciones relativas a una torre disponibles.
+			\item (tipo == Barra de vida)
+			\item \textcolor{Orange}{HP}
+		    \begin{itemize}
+			    \item Una barra que muestra la vida actual respecto a la máxima de una torre/enemigo/base.
+			    \item f(Torre.HP, Torre.MAX\_HEALTH) || f(Base.HP, Base.MAX\_HEALTH) || f(Enemigo.HP, Enemigo.MAX\_HEALTH)
+		    \end{itemize}
+		    \item (tipo == Nivel)
+		    \item \textcolor{Orange}{Logros}
+		    \begin{itemize}
+			    \item Los logros que se ha conseguido en cierto nivel.
+			    \item f(Partida.Logros)
+		    \end{itemize}
+		    \item \textcolor{Orange}{Menu\_dificultad}
+		    \begin{itemize}
+			    \item Permite seleccionar los distintos niveles de dificultad, además de mostrar cuales se han superado.
+			    \item f(Partida.Nivel\_superado)
+		    \end{itemize}
+		\end{itemize}
+    \end{itemize}
+    \item \textcolor{Orange}{Research Mode}
+    \begin{itemize}
+		\item El HUD durante la compra de mejoras entre niveles.
+		\item \textcolor{Orange}{Mejoras\_menu}
+		\begin{itemize}
+			\item Las mejoras compradas y disponibles para comprar.
+			\item f(Research.Improvements)
+		\end{itemize}
+    \end{itemize}
+	\item \textcolor{Orange}{Map Mode}
+    \begin{itemize}
+		\item El HUD durante la selección de niveles.
+		\item \textcolor{Orange}{Niveles}
+		\begin{itemize}
+			\item Los niveles seleccionables.
+			\item f(Partida.Nivel\_superado)
+		\end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\clearpage
+
+\noindent \textbf{Ataque Especial}
 
 \hfill \break \noindent Entidad encargada de generar recursos periódicamente.
 
 \begin{itemize}
-    \item 
-\end{itemize}
-
-\noindent \textbf{Torre Generadora}
-
-\hfill \break \noindent Entidad encargada de generar recursos periódicamente.
-
-\begin{itemize}
-    \item 
+    \item \textcolor{Orange}{TYPE \{Bomb, Nuke\}}
+    \begin{itemize}
+        \item El tipo de ataque especial.
+    \end{itemize}
+    \item \textcolor{Orange}{Range \{(0, MAX\_LEVEL)\}}
+    \begin{itemize}
+        \item f(Research.Improvements ,TYPE)
+        \item La distancia a la que se podrá lanzar el ataque especial.
+    \end{itemize}
+    \item \textcolor{Orange}{Damage \{(0, MAX\_LEVEL)\}}
+    \begin{itemize}
+        \item f(Research.Improvements ,TYPE)
+        \item El daño que hará el ataque especial por defecto.
+    \end{itemize}
+    \item \textcolor{Orange}{Appearance \{VISUAL\_MODEL\}}
+    \begin{itemize}
+        \item f(TYPE)
+        \item La apariencia visual de la explosión.
+    \end{itemize}
+    \item \textcolor{Orange}{Area Of Effect \{INTEGER\}}
+    \begin{itemize}
+        \item f(TYPE)
+        \item Área en el que hace daño el ataque.
+    \end{itemize}
+    \item \textcolor{Orange}{Cooldown \{INTEGER\}}
+    \begin{itemize}
+        \item f(Research.Improvements ,TYPE)
+        \item Cuánto tiempo ha de trascurrir antes de poder usar el ataque especial de nuevo.
+    \end{itemize}
 \end{itemize}
 
 \clearpage
@@ -395,17 +696,318 @@ Para cumplir los objetivos secundarios el jugador debe cumplir ciertos requisito
     \end{figure}
 \end{itemize}
 
+\begin{itemize}
+    \item \textcolor{Orange}{Reparar}
+    \begin{itemize}
+        \item Limitaciones: vida torre mayor que 0 y menor que vida maxima, recursos suficientes
+        \item Consecuencias: aumento vida torre, disminución de recursos
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/repair.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Reparar}}}\label{fig:4}
+    \end{figure}
+\end{itemize}
+
+\clearpage
+
+\begin{itemize}
+    \item \textcolor{Orange}{Mejorar}
+    \begin{itemize}
+        \item Limitaciones: tener Torre.Nivel menor que Torre.MAX\_LEVEL, recursos suficientes, mejora desbloqueada
+        \item Consecuencias: aumento de Torre.Health, disminución de recursos
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/upgrade.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Mejorar}}}\label{fig:5}
+    \end{figure}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Escudo}
+    \begin{itemize}
+        \item Limitaciones: recursos suficientes, habilidad desbloqueada
+        \item Consecuencias: reducción de daño sobre torre, disminución de recursos
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/shield.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Escudo}}}\label{fig:6}
+    \end{figure}
+\end{itemize}
+
+\clearpage
+
+\begin{itemize}
+    \item \textcolor{Orange}{Controlar Base}
+    \begin{itemize}
+        \item Limitaciones: sin limitaciones
+        \item Consecuencias: activa el modo de disparo de la base o Tower\_Play\_Mode
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/tower_play_mode.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Control Base}}}\label{fig:7}
+    \end{figure}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/shoot_base.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Disparar}}}\label{fig:8}
+    \end{figure}
+\end{itemize}
+
+\clearpage
+
 \subsubsection{3.1.2. HUD Actions}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Construir Torre (O Recolector)}
+    \begin{itemize}
+        \item Limitaciones: recursos suficientes, espacio libre, torre desbloqueada
+        \item Consecuencias: cambio visual (nueva torre), espacio ocupado, reducción de recursos
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/click_hud_tower.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Click en Icono de Torre}}}\label{fig:9}
+    \end{figure}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/drop_the_tower.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Soltar torre}}}\label{fig:10}
+    \end{figure}
+\end{itemize}
+
+\clearpage
+
+\begin{itemize}
+    \item \textcolor{Orange}{Seleccionar Torre}
+    \begin{itemize}
+        \item Limitaciones: torre seleccionable
+        \item Consecuencias: activa menú pop-up
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/click_on_tower.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Click en Torre}}}\label{fig:11}
+    \end{figure}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Cámara en Torre o Enemigo}
+    \begin{itemize}
+        \item Limitaciones: torre o enemigo seleccionable
+        \item Consecuencias: cambia la posición de la camara 
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/camera.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Camara}}}\label{fig:12}
+    \end{figure}
+\end{itemize}
+
+\clearpage
+
+\begin{itemize}
+    \item \textcolor{Orange}{Ataque Especial}
+    \begin{itemize}
+        \item Limitaciones: ataque activo (no en tiempo de recarga), ataque desbloqueado
+        \item Consecuencias: disminución de la vida de los enemigos, activar tiempo de recarga 
+    \end{itemize}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/bomb.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Bomba}}}\label{fig:13}
+    \end{figure}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.7\textwidth]{action-reaction/nuke.png}
+        \centering
+        \textcolor{Orange}{\textbf{\caption{Diagrama de la Acción Nuke}}}\label{fig:14}
+    \end{figure}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Pausar el juego}
+    \begin{itemize}
+        \item Limitaciones:  juego activo
+        \item Consecuencias: juego pausado
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Reanudar Juego}
+    \begin{itemize}
+        \item Limitaciones:  juego pausado
+        \item Consecuencias: juego reanudado
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Acelerar Juego}
+    \begin{itemize}
+        \item Limitaciones: juego en velocidad inferior a la que se active
+        \item Consecuencias: juego acelerado
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Ralentizar Juego}
+    \begin{itemize}
+        \item Limitaciones:  juego en velocidad superior a la que se active
+        \item Consecuencias: se ralentiza el juego
+    \end{itemize}
+\end{itemize}
 
 \subsubsection{3.1.3. Research Actions}
 
+\begin{itemize}
+    \item \textcolor{Orange}{Elegir Mejora}
+    \begin{itemize}
+        \item Limitaciones: tener XP, tener el nivel previo de la mejora si lo hay
+        \item Consecuencias: se selecciona la mejora, sin hacerse efectiva 
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Confirmar Mejora}
+    \begin{itemize}
+        \item Limitaciones: haber seleccionado la mejora, pulsar el botón de aceptación
+        \item Consecuencias: se agrega la mejora, se vuelve a la pantalla de mapa
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Cancelar Mejora}
+    \begin{itemize}
+        \item Limitaciones: pulsar el botón de cancelación
+        \item Consecuencias: se vuelve a la pantalla de mapa, no se confirman las mejoras elegidas
+    \end{itemize}
+\end{itemize}
+
 \subsubsection{3.1.4. Map Actions}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Selección de Nivel}
+    \begin{itemize}
+        \item Limitaciones: nivel desbloqueado
+        \item Consecuencias: menú de selección de dificultad
+    \end{itemize}
+    \item \textcolor{Orange}{Volver al Menú}
+    \begin{itemize}
+        \item Limitaciones: no tiene
+        \item Consecuencias: vuelve al menú principal
+    \end{itemize}
+    \item \textcolor{Orange}{Acceder al Research}
+    \begin{itemize}
+        \item Limitaciones: no tiene
+        \item Consecuencias: abre el menú research
+    \end{itemize}
+\end{itemize}
 
 \subsubsection{3.1.5. Difficulty Actions}
 
+\begin{itemize}
+    \item \textcolor{Orange}{Seleccionar Dificultad}
+    \begin{itemize}
+        \item Limitaciones: haber seleccionado un nivel
+        \item Consecuencias: accede a la partida en esa dificultad
+    \end{itemize}
+\end{itemize}
+
 \subsection{3.2. Interacciones}
 
+\begin{itemize}
+    \item \textcolor{Orange}{Colisión enemigo-torre}
+    \begin{itemize}
+        \item Consecuencias:  El enemigo se orienta hacia la torre y comienza a atacar. Mientras ataca, la torre pierde health. Si la torre se queda sin health, muere.
+    \end{itemize}
+    \item \textcolor{Orange}{Colisión enemigo-base}
+    \begin{itemize}
+        \item Consecuencias: El enemigo se orienta hacia la base y comienza a atacar. Mientras ataca, la base pierde health. Si la base se queda sin health, el jugador pierde.
+    \end{itemize}
+    \clearpage
+    \item \textcolor{Orange}{Colisión enemigo-enemigo}
+    \begin{itemize}
+        \item Consecuencias: El enemigo de ID menor tiene prioridad, tanto en la misma vía como en vías distintas.
+    \end{itemize}
+    \item \textcolor{Orange}{Entrada de un enemigo en la LOS de una torre}
+    \begin{itemize}
+        \item Consecuencias: La torre, si está disparando ya, evalúa de nuevo a qué enemigo debería estar disparando. Si no, simplemente se pone a disparar al enemigo.
+    \end{itemize}
+    \item \textcolor{Orange}{Colisión bala/misil/explosión-enemigo}
+    \begin{itemize}
+        \item Consecuencias: El enemigo pierde health. Si el enemigo se queda sin health, muere y da una cantidad de recursos al jugador.
+    \end{itemize}
+\end{itemize}
+
 \subsection{3.3. Reglas}
+
+\begin{itemize}
+    \item \textcolor{Orange}{Colocar torre}
+    \begin{itemize}
+        \item Si hay suficientes recursos y no hay ninguna otra torre en el punto seleccionado, coloca una torre.
+        \item IF tower.buy\_price < level.resources AND tower\_spawn\_point.is\_empty() AND \break tower\_spawn\_point.isSelected() THEN tower.spawn(tower\_spawn\_point)
+    \end{itemize}
+    \item \textcolor{Orange}{Reparar las torres}
+    \begin{itemize}
+        \item Si una torre está dañada y el jugador tiene la suficiente energía, se usa energía para restaurar la salud de la torre.
+        \item IF(tower.HEALTH < tower.MAX\_HEALTH) AND (level.resources >= tower.repair\_price) THEN (level.resources -= tower.repair\_price)  AND (tower.HEALTH = tower.MAX\_HEALTH)
+    \end{itemize}
+    \item \textcolor{Orange}{Mejorar las torres}
+    \begin{itemize}
+        \item Si la experiencia es suficiente, se puede aumentar el nivel de la torre.
+        \item IF (research.XP  >= tower.UPGRADE\_COST) THEN tower.UPGRADE += 1
+    \end{itemize}
+    \item \textcolor{Orange}{Uso de habilidades}
+    \begin{itemize}
+        \item Si la habilidad está disponible, el jugador puede utilizar la habilidad.
+        \item IF special\_attack.isSelected() AND special\_attack.cooldown == 0 AND \break level.pointClicked(point) THEN special\_attack.launch()
+    \end{itemize}
+    \item \textcolor{Orange}{Colocar torre generadora}
+    \begin{itemize}
+        \item Si hay suficientes recursos y no hay ninguna otra torre en el punto seleccionado, coloca una torre.
+        \item IF tower.buy\_price < level.resources AND tower\_spawn\_point.is\_empty() THEN \break tower.spawn(tower\_spawn\_point)
+    \end{itemize}
+    \clearpage
+    \item \textcolor{Orange}{Eliminar las torres para recuperar recursos}
+    \begin{itemize}
+        \item Si la vida de la torre no es 0 y la torre no se está reparando, el jugador podrá eliminar la torre y recuperar recursos.
+        \item IF(tower.HEALTH > 0 AND NOT tower.repairing()) THEN (tower.HEALTH = 0) AND \break (level.resources += tower.COST)
+    \end{itemize}
+    \item \textcolor{Orange}{Saquear enemigo}
+    \begin{itemize}
+        \item Si un bicho muere y la energía no están al máximo, entonces el jugador gana energía según el tipo de bicho.
+        \item IF (bicho.HEALTH == 0) AND (level.resources < MAX\_RESOURCES) THEN \break level.resources += bicho.resources
+    \end{itemize}
+    \item \textcolor{Orange}{Activar torre}
+    \begin{itemize}
+        \item Si un bicho entra en el radio de acción de una torre y esta no está atacando o el objetivo es prioritario y el objetivo actual no lo es, entonces esta se activa y ataca al bicho.
+        \item IF collision(tower, bicho) THEN IF ((bicho.tipo == tower.preferred\_target AND \break tower.target != tower.preferred\_target) OR tower.target == NULL) THEN \break tower.attack(bicho)
+    \end{itemize}
+    \item \textcolor{Orange}{Iniciar recursos}
+    \begin{itemize}
+        \item La partida comienza con una determinada cantidad de energía.
+        \item level.resources = level.init\_resources
+    \end{itemize}
+    \item \textcolor{Orange}{Bicho ataca}
+    \begin{itemize}
+        \item Si una torre está en el rango de acción de un bicho, este la ataca hasta que la torre es destruida o el bicho muere.
+        \item IF collision(bicho, tower) THEN WHILE tower.HEALTH > 0 AND bicho.HEALTH > 0 \break DO attack(tower)
+
+    \end{itemize}
+\end{itemize}
 
 % %--------------------- Acciones, Interacciones y Reglas ---------------------
 
