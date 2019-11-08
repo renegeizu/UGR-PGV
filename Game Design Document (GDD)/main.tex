@@ -294,10 +294,10 @@ Para cumplir los objetivos secundarios el jugador debe cumplir ciertos requisito
         \item f(Type)
         \item Cantidad de recursos que cuesta reparar la torre.
     \end{itemize}
-    \item \textcolor{Orange}{Price \{INTEGER\}}
+    \item \textcolor{Orange}{Upgrade Price \{INTEGER\}}
     \begin{itemize}
-        \item f(Type)
-        \item Cantidad de recursos que necesita la adquisición del objeto Tower.
+        \item f(Upgrade, Type)
+        \item Cantidad de recursos que cuesta el upgrade de Tower.
     \end{itemize}
     \item \textcolor{Orange}{Camera \{ON, OFF\}}
     \begin{itemize}
@@ -321,6 +321,10 @@ Para cumplir los objetivos secundarios el jugador debe cumplir ciertos requisito
     \item \textcolor{Orange}{Dirección}
     \begin{itemize}
         \item Valor que indica hacia donde observa el objeto Camera en el mundo del juego.
+    \end{itemize}
+        \item \textcolor{Orange}{Up Vector}
+    \begin{itemize}
+        \item Valor para diferenciar arriba/abajo en la cámara.
     \end{itemize}
 \end{itemize}
 
@@ -457,7 +461,7 @@ Para cumplir los objetivos secundarios el jugador debe cumplir ciertos requisito
     \end{itemize}
 \end{itemize}
 
-\noindent \textbf{Mejoras}
+\noindent \textbf{LVL}
 
 \begin{itemize}
         \item \textcolor{Orange}{Init\_resources \{1, MAX\_RESOURCES\}}
@@ -513,7 +517,7 @@ Para cumplir los objetivos secundarios el jugador debe cumplir ciertos requisito
 
 \noindent \textbf{Research}
 
-\hfill \break \noindent Entidad encargada de generar recursos periódicamente.
+\hfill \break \noindent Entidad que contiene las mejoras del jugador.
 
 \begin{itemize}
     \item \textcolor{Orange}{EXP \{INTEGER\}}
@@ -569,28 +573,34 @@ Para cumplir los objetivos secundarios el jugador debe cumplir ciertos requisito
     \begin{itemize}
         \item Varios menus o iconos que aparecen superimpuestos sobre el juego.
 		\item \textcolor{Orange}{Tipo \{Torre, Nivel, Barra de vida\}}
-		\item (tipo == Torre)
-		\item \textcolor{Orange}{Tower\_Menu}
-		\begin{itemize}
-			\item Un menu con todas las acciones relativas a una torre disponibles.
-			\item (tipo == Barra de vida)
-			\item \textcolor{Orange}{HP}
-		    \begin{itemize}
-			    \item Una barra que muestra la vida actual respecto a la máxima de una torre/enemigo/base.
-			    \item f(Torre.HP, Torre.MAX\_HEALTH) || f(Base.HP, Base.MAX\_HEALTH) || f(Enemigo.HP, Enemigo.MAX\_HEALTH)
-		    \end{itemize}
-		    \item (tipo == Nivel)
-		    \item \textcolor{Orange}{Logros}
-		    \begin{itemize}
-			    \item Los logros que se ha conseguido en cierto nivel.
-			    \item f(Partida.Logros)
-		    \end{itemize}
-		    \item \textcolor{Orange}{Menu\_dificultad}
-		    \begin{itemize}
-			    \item Permite seleccionar los distintos niveles de dificultad, además de mostrar cuales se han superado.
-			    \item f(Partida.Nivel\_superado)
-		    \end{itemize}
-		\end{itemize}
+    	\item (tipo == Torre)
+    	\begin{itemize}
+            \item \textcolor{Orange}{Tower\_Menu}
+        	\begin{itemize}
+        		\item Un menu con todas las acciones relativas a una torre disponibles.
+        	\end{itemize}
+        \end{itemize}
+        \item (tipo == Barra de vida)
+        \begin{itemize}
+        	\item \textcolor{Orange}{HP}
+        	\begin{itemize}
+                \item Una barra que muestra la vida actual respecto a la máxima de una torre/enemigo/base.
+        		\item f(Torre.HP, Torre.MAX\_HEALTH) || f(Base.HP, Base.MAX\_HEALTH) || f(Enemigo.HP, Enemigo.MAX\_HEALTH)
+            \end{itemize}
+        \end{itemize}
+    	\item (tipo == Nivel)
+    	\begin{itemize}
+    		\item \textcolor{Orange}{Logros}
+    		\begin{itemize}
+    		    \item Los logros que se ha conseguido en cierto nivel.
+    		    \item f(Partida.Logros)
+    		\end{itemize}
+    		\item \textcolor{Orange}{Menu\_dificultad}
+    		\begin{itemize}
+    		    \item Permite seleccionar los distintos niveles de dificultad, además de mostrar cuales se han superado.
+    			\item f(Partida.Nivel\_superado)
+    		\end{itemize}
+        \end{itemize}
     \end{itemize}
     \item \textcolor{Orange}{Research Mode}
     \begin{itemize}
@@ -616,17 +626,10 @@ Para cumplir los objetivos secundarios el jugador debe cumplir ciertos requisito
 
 \noindent \textbf{Ataque Especial}
 
-\hfill \break \noindent Entidad encargada de generar recursos periódicamente.
-
 \begin{itemize}
     \item \textcolor{Orange}{TYPE \{Bomb, Nuke\}}
     \begin{itemize}
         \item El tipo de ataque especial.
-    \end{itemize}
-    \item \textcolor{Orange}{Range \{(0, MAX\_LEVEL)\}}
-    \begin{itemize}
-        \item f(Research.Improvements ,TYPE)
-        \item La distancia a la que se podrá lanzar el ataque especial.
     \end{itemize}
     \item \textcolor{Orange}{Damage \{(0, MAX\_LEVEL)\}}
     \begin{itemize}
@@ -653,8 +656,6 @@ Para cumplir los objetivos secundarios el jugador debe cumplir ciertos requisito
 \clearpage
 
 \subsection{2.2. Estados S-T}
-
-\hfill \break
 
 \begin{figure}[htb]
     \centering
@@ -975,17 +976,12 @@ Para cumplir los objetivos secundarios el jugador debe cumplir ciertos requisito
         \item Si la habilidad está disponible, el jugador puede utilizar la habilidad.
         \item IF special\_attack.isSelected() AND special\_attack.cooldown == 0 AND \break level.pointClicked(point) THEN special\_attack.launch()
     \end{itemize}
-    \item \textcolor{Orange}{Colocar torre generadora}
-    \begin{itemize}
-        \item Si hay suficientes recursos y no hay ninguna otra torre en el punto seleccionado, coloca una torre.
-        \item IF tower.buy\_price < level.resources AND tower\_spawn\_point.is\_empty() THEN \break tower.spawn(tower\_spawn\_point)
-    \end{itemize}
-    \clearpage
     \item \textcolor{Orange}{Eliminar las torres para recuperar recursos}
     \begin{itemize}
         \item Si la vida de la torre no es 0 y la torre no se está reparando, el jugador podrá eliminar la torre y recuperar recursos.
-        \item IF(tower.HEALTH > 0 AND NOT tower.repairing()) THEN (tower.HEALTH = 0) AND \break (level.resources += tower.COST)
+        \item IF(tower.HEALTH > 0 AND NOT tower.repairing()) THEN (tower.HEALTH = 0) AND \break (level.resources += tower.COST) AND (tower.destroy())
     \end{itemize}
+    \clearpage
     \item \textcolor{Orange}{Saquear enemigo}
     \begin{itemize}
         \item Si un bicho muere y la energía no están al máximo, entonces el jugador gana energía según el tipo de bicho.
