@@ -1,0 +1,196 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930) (preloaded format=pdftex 2019.11.7)  7 NOV 2019 18:40
+entering extended mode
+**./main.tex
+(main.tex
+! Undefined control sequence.
+l.3 \documentclass
+                  {article}
+? 
+! Undefined control sequence.
+l.4 \usepackage
+               [spanish]{babel}
+? 
+! Undefined control sequence.
+l.5 \usepackage
+               {lipsum}
+? 
+! Undefined control sequence.
+l.6 \usepackage
+               {natbib}
+? 
+! Undefined control sequence.
+l.7 \usepackage
+               {graphicx}
+? 
+! Undefined control sequence.
+l.8 \usepackage
+               {analysis_orax}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.8 \usepackage{analysis_
+                         orax}
+? 
+! Extra }, or forgotten $.
+l.8 \usepackage{analysis_orax}
+                              
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.9 
+    
+? 
+! Undefined control sequence.
+l.12 \begin
+           {document}
+? 
+! Undefined control sequence.
+l.16 \begin
+           {titlepage}
+? 
+! Undefined control sequence.
+l.18 \newlength
+               {\centeroffset}
+? 
+! Undefined control sequence.
+l.18 \newlength{\centeroffset
+                             }
+? 
+! Undefined control sequence.
+l.19 \setlength
+               {\centeroffset}{-0.5\oddsidemargin}
+? 
+! Undefined control sequence.
+l.19 \setlength{\centeroffset
+                             }{-0.5\oddsidemargin}
+? 
+! Undefined control sequence.
+l.19 \setlength{\centeroffset}{-0.5\oddsidemargin
+                                                 }
+? 
+! Undefined control sequence.
+l.20 \addtolength
+                 {\centeroffset}{0.5\evensidemargin}
+? 
+! Undefined control sequence.
+l.20 \addtolength{\centeroffset
+                               }{0.5\evensidemargin}
+? 
+! Undefined control sequence.
+l.20 ...tolength{\centeroffset}{0.5\evensidemargin
+                                                  }
+? 
+! Undefined control sequence.
+l.21 \thispagestyle
+                   {empty}
+? 
+! Undefined control sequence.
+l.22 \noindent\hspace
+                     *{\centeroffset}
+? 
+! Undefined control sequence.
+l.22 \noindent\hspace*{\centeroffset
+                                    }
+? 
+! Undefined control sequence.
+l.24 \begin
+           {minipage}{\textwidth}
+? 
+! Undefined control sequence.
+l.24 \begin{minipage}{\textwidth
+                                }
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   \par 
+l.27 
+     
+? 
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \par 
+l.27 
+     
+? 
+! Undefined control sequence.
+l.28 \includegraphics
+                     [width=0.9\textwidth]{figures/UGR.jpg}\\[2cm]
+? 
+! Undefined control sequence.
+l.28 \includegraphics[width=0.9\textwidth
+                                         ]{figures/UGR.jpg}\\[2cm]
+? 
+Runaway argument?
+[2cm] 
+! Paragraph ended before \\ was complete.
+<to be read again> 
+                   \par 
+l.29 
+     
+? 
+! Undefined control sequence.
+l.30 \textsc
+            {\Large Programación Gráfica de Videojuegos\\[0.5cm]}
+? 
+! Undefined control sequence.
+l.30 \textsc{\Large
+                    Programación Gráfica de Videojuegos\\[0.5cm]}
+? 
+Missing character: There is no � in font cmr10!
+Missing character: There is no � in font cmr10!
+Missing character: There is no � in font cmr10!
+Missing character: There is no � in font cmr10!
+! Argument of \\ has an extra }.
+<inserted text> 
+                \par 
+<to be read again> 
+                   }
+l.30 ...amación Gráfica de Videojuegos\\[0.5cm]}
+                                                  
+? 
+Runaway argument?
+[0.5cm]
+! Paragraph ended before \\ was complete.
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.30 ...amación Gráfica de Videojuegos\\[0.5cm]}
+                                                  
+? 
+! Undefined control sequence.
+l.31 \Huge
+          \bfseries Game Design Document\\
+? 
+! Undefined control sequence.
+l.31 \Huge\bfseries
+                    Game Design Document\\
+? 
+Runaway argument?
+ 
+! Paragraph ended before \\ was complete.
+<to be read again> 
+                   \par 
+l.32 
+     
+? 
+[1{C:/Users/Kieran/Downloads/MiTeX/texmfs/data/pdftex/config/pdftex.map}] )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 8 ({)
+### bottom level<C:/Users/Kieran/Downloads/MiTeX/texmfs/install/fonts/type1/pub
+lic/amsfonts/cm/cmmi10.pfb><C:/Users/Kieran/Downloads/MiTeX/texmfs/install/font
+s/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Kieran/Downloads/MiTeX/texmfs/in
+stall/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on main.pdf (1 page, 34395 bytes).
+PDF statistics:
+ 18 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
